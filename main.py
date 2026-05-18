@@ -58,4 +58,14 @@ def jouer():
             return
     print("vous avez perdu, le mot est ",mot)
 
-jouer()
+def boucle_de_jeu():
+    while True:
+        jouer()
+        reponse=input("est ce que vous aimriez rejouer ou non : repondez par oui ou non ")
+        if reponse=="non":
+            print("Merci !")
+            break
+        elif reponse!="oui":
+            reponse=input("rentrez une reponse valide")
+
+boucle_de_jeu()
