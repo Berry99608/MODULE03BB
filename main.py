@@ -3,7 +3,6 @@ import random
 def enlever_accents(mot):
     accents ="àâäéèêëîïôöùûüçÀÂÄÉÈÊËÎÏÔÖÙÛÜÇ"
     sans_accents="aaaeeeeiioouuucAAAEEEEIIOOUUUC"
-
     resultat = ""
     for c in mot:
         if c in accents:
@@ -12,7 +11,9 @@ def enlever_accents(mot):
             resultat += c
     return resultat
 #definir la fonction d'Importation des mots
+
 #le fichier doit etre enregistrer dans le dossier du projet.
+
 # Fonction pour choisir un mot au hasard
 
 def mot_aleatoire():
@@ -41,21 +42,19 @@ def Jouer():
         if chance == 1:
             pas_dans_le_mot = []
             i = 0
-
             while i < len(mot):
                 if mot[i] not in lettres_du_mot:
                     pas_dans_le_mot.append(mot[i])
                 i += 1
-
             if len(pas_dans_le_mot) > 0:
                 print("Indice :", random.choice(pas_dans_le_mot))
-        lettre_a_renter=input("entrez une lettre :").lower()
+        lettre_a_renter=input("entrez une lettre :")
         if lettre_a_renter in mot:
             lettres_du_mot.append(lettre_a_renter)
-        else :
-            chance-=1
-        if all(c in lettres_du_mot for c in mot):
+        elif all(c in lettres_du_mot for c in mot):
             print("vous avez gagne")
+        else:
+            chance -= 1
             return
     print("vous avez perdu, le mot est ",mot)
 
