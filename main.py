@@ -39,7 +39,7 @@ def jouer():
     lettres_rentre=[]# une variable pour prendre les lettres suggeree en note et ne pas les suggerer dans lindice
     chance=6
     while chance>0:
-        print ("mot : ",afficher(mot,lettres_du_mot),"le nombre de chance restant: ",chance)
+        print (" le mot : ",afficher(mot,lettres_du_mot),"le nombre de chance: ",chance)
         if chance == 1:
             pas_dans_le_mot = []
             alphabet="abcdefghijklmnopqrstuvwxyz"
@@ -63,9 +63,11 @@ def jouer():
 
 #la fonction pour commencer le jeu, et le choix de continuer ou pas
 def boucle_de_jeu():
+    print("Bienvenue au jeu du pendu :")
+    print("La machine choisira un mot alleatoire de la liste fournie , et vous devez le deviner.")
     while True:
         jouer()
-        reponse=input("est ce que vous aimeriez rejouer ou non : repondez par oui ou non ")
+        reponse=input("Est ce que vous aimeriez rejouer ou non : repondez par oui ou non ")
         if reponse=="non":
             print("Merci !")
             break
