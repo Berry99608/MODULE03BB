@@ -21,11 +21,11 @@ def mot_aleatoire():
         return enlever_accents(random.choice(f.read().split()))
 
 #definir la fonction d'afficher l'etat du mot
-def afficher(mot, lettres):
+def afficher(mot, lettres_du_mot):
     resultat = ""
     i = 0
-    while i < len(mot)+1:
-        if mot[i] in lettres:
+    while i < len(mot):
+        if mot[i] in lettres_du_mot:
             resultat += mot[i] + " "
         else:
             resultat += "_ "
@@ -33,8 +33,8 @@ def afficher(mot, lettres):
 
     return resultat
 #definir la fonction du jeu
-def Jouer():
-    mot=mot_aleatoire()
+def jouer():
+    mot=enlever_accents(mot_aleatoire())
     lettres_du_mot=[]
     chance=6
     while chance>0:
@@ -58,3 +58,4 @@ def Jouer():
             return
     print("vous avez perdu, le mot est ",mot)
 
+jouer()
