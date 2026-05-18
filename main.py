@@ -1,8 +1,9 @@
 import random
 #definir la fonction qui enleve les accents
 def enlever_accents(mot):
-    accents ="àâäéèêëîïôöùûüç"
-    sans_accents ="aaaeeeeiioouuuc"
+    accents ="àâäéèêëîïôöùûüçÀÂÄÉÈÊËÎÏÔÖÙÛÜÇ"
+    sans_accents="aaaeeeeiioouuucAAAEEEEIIOOUUUC"
+
     resultat = ""
     for c in mot:
         if c in accents:
@@ -12,9 +13,9 @@ def enlever_accents(mot):
     return resultat
 #definir la fonction d'Importation des mots
 #le fichier doit etre enregistrer dans le dossier du projet.
-def mot_aleatoire():
-    with open("mots_pendu.txt") as fichier:
-        mots = fichier.readlines()
-    return enlever_accents(random.choice(mots).strip())
+# Fonction pour choisir un mot au hasard
 
+def mot_aleatoire():
+    with open("mots_pendu.txt") as f:
+        return enlever_accents(random.choice(f.read().split()))
 print(mot_aleatoire())
