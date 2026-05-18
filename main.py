@@ -18,4 +18,44 @@ def enlever_accents(mot):
 def mot_aleatoire():
     with open("mots_pendu.txt") as f:
         return enlever_accents(random.choice(f.read().split()))
-print(mot_aleatoire())
+
+#definir la fonction d'afficher l'etat du mot
+def afficher(mot, lettres):
+    resultat = ""
+    i = 0
+    while i < len(mot)+1:
+        if mot[i] in lettres:
+            resultat += mot[i] + " "
+        else:
+            resultat += "_ "
+        i += 1
+
+    return resultat
+#definir la fonction du jeu
+def Jouer():
+    mot=mot_aleatoire()
+    lettres_du_mot=[]
+    chance=6
+    while chance>0:
+        print ("mot : ",afficher(mot,lettres_du_mot),"le nombre de chance restant: ",chance)
+        if chance == 1:
+            pas_dans_le_mot = []
+            i = 0
+
+            while i < len(mot):
+                if mot[i] not in lettres_du_mot:
+                    pas_dans_le_mot.append(mot[i])
+                i += 1
+
+            if len(pas_dans_le_mot) > 0:
+                print("Indice :", random.choice(pas_dans_le_mot))
+        lettre_a_renter=input("entrez une lettre :").lower()
+        if lettre_a_renter in mot:
+            lettres_du_mot.append(lettre_a_renter)
+        else :
+            chance-=1
+        if all(c in lettres_du_mot for c in mot):
+            print("vous avez gagne")
+            return
+    print("vous avez perdu, le mot est ",mot)
+
