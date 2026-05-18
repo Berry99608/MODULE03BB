@@ -51,10 +51,10 @@ def jouer():
         lettre_a_renter=input("entrez une lettre :")
         if lettre_a_renter in mot:
             lettres_du_mot.append(lettre_a_renter)
-        elif all(c in lettres_du_mot for c in mot):
-            print("vous avez gagne")
         else:
             chance -= 1
+        if "_" not in afficher(mot,lettres_du_mot):
+            print("vous avez gagne , le mot est affectivement ",mot)
             return
     print("vous avez perdu, le mot est ",mot)
 
