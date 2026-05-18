@@ -58,6 +58,7 @@ def jouer():
             return
     print("vous avez perdu, le mot est ",mot)
 
+#la fonction pour commencer le jeu, et le choix de continuer ou pas
 def boucle_de_jeu():
     while True:
         jouer()
