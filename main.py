@@ -36,19 +36,22 @@ def afficher(mot, lettres_du_mot):
 def jouer():
     mot=enlever_accents(mot_aleatoire())
     lettres_du_mot=[]
+    lettres_rentre=[]# une variable pour prendre les lettres suggeree en note et ne pas les suggerer dans lindice
     chance=6
     while chance>0:
         print ("mot : ",afficher(mot,lettres_du_mot),"le nombre de chance restant: ",chance)
         if chance == 1:
             pas_dans_le_mot = []
+            alphabet="abcdefghijklmnopqrstuvwxyz"
             i = 0
-            while i < len(mot):
-                if mot[i] not in lettres_du_mot:
-                    pas_dans_le_mot.append(mot[i])
+            while i < len(alphabet):
+                if alphabet[i] not in lettres_rentre:
+                    pas_dans_le_mot.append(alphabet[i])
                 i += 1
             if len(pas_dans_le_mot) > 0:
-                print("Indice :", random.choice(pas_dans_le_mot))
+                print("Indice : une lettre qui n'est pas dans le mot :", random.choice(pas_dans_le_mot))
         lettre_a_renter=input("entrez une lettre :")
+        lettres_rentre.append(lettre_a_renter)
         if lettre_a_renter in mot:
             lettres_du_mot.append(lettre_a_renter)
         else:
@@ -62,7 +65,7 @@ def jouer():
 def boucle_de_jeu():
     while True:
         jouer()
-        reponse=input("est ce que vous aimriez rejouer ou non : repondez par oui ou non ")
+        reponse=input("est ce que vous aimeriez rejouer ou non : repondez par oui ou non ")
         if reponse=="non":
             print("Merci !")
             break
